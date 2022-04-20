@@ -1,7 +1,8 @@
 "use strict";
 
 const titleClickHandler = function (event) {
-	const clickedElement = this;
+	event.preventDefault();
+	const clickedElement = this; //guzik
 	console.log("Link was clicked!");
 	console.log("event:", event);
 
