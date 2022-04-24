@@ -96,3 +96,4 @@ for (let link of links) {
 }
 
 fbgerb;
+console.log("dupa");
