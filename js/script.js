@@ -95,5 +95,3 @@ for (let link of links) {
 	link.addEventListener("click", titleClickHandler);
 }
 
-fbgerb;
-console.log("dupa");
