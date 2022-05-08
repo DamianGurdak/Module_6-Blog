@@ -3,8 +3,8 @@
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this; //guzik
-  console.log('Link was clicked!');
-  console.log('event:', event);
+  // console.log('Link was clicked!');
+  // console.log('event:', event);
 
   /* 1.[DONE] remove class 'active' from all article links  */
 
@@ -16,7 +16,7 @@ const titleClickHandler = function (event) {
 
   /* 2.[DONE] add class 'active' to the clicked link */
 
-  console.log('clickedElement:', clickedElement);
+  // console.log('clickedElement:', clickedElement);
 
   clickedElement.classList.add('active');
 
@@ -31,7 +31,7 @@ const titleClickHandler = function (event) {
   /* 4.[DONE] get 'href' attribute from the clicked link */
 
   const articleSelector = clickedElement.getAttribute('href').substring(1);
-  console.log('articleSelector:', articleSelector);
+  // console.log('articleSelector:', articleSelector);
 
   /* 5.[IN RPOGRESS] find the correct article using the selector (value of 'href' attribute) */
 
@@ -39,7 +39,7 @@ const titleClickHandler = function (event) {
     // "article[id=" + articleSelector + "]"
     `article[id=${articleSelector}]`
   );
-  console.log('targerArticle:', targetArticle);
+  // console.log('targerArticle:', targetArticle);
 
   /* 6.[IN PROGRESS] add class 'active' to the correct article */
 
@@ -62,22 +62,23 @@ function generateTitleLinks(customSelector = '') {
 
   clearMessages();
 
-  const titleList = document.querySelector(
-    optTitleListSelector + customSelector
-  );
+  const titleList = document.querySelector(optTitleListSelector);
 
   /* 8.[IN PROGRESS] for each article  */
 
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(
+    optArticleSelector + customSelector
+  );
   // console.log(articles);
-
+  // console.log('customSelector:', customSelector);
+  // console.log(optArticleSelector);
   let html = '';
 
   for (let article of articles) {
     /* 9.[IN PROGRESS] get the article id */
 
     const articleId = article.getAttribute('id');
-    console.log('articleiD', articleId);
+    // console.log('articleiD', articleId);
 
     /* 10.[IN PROGRESS] find the title element */
     /* 11.[IN PROGRES] get the title from the title element */
@@ -86,7 +87,7 @@ function generateTitleLinks(customSelector = '') {
     /* 12.[] create HTML of the link */
 
     const linkHTML = `<li><a href=#${articleId}><span>${articleTitle}</span></a></li>`;
-    console.log(linkHTML);
+    // console.log(linkHTML);
 
     /* 13.[] insert link into titleList */
 
@@ -114,6 +115,8 @@ function generateTags() {
   /* 2.[DONE] START LOOP: for every article: */
 
   for (let article of articles) {
+    // console.log(article);
+    // console.log(articles);
     /* 3.[IN PROGRESS] find tags wrapper */
 
     const tagsWrapper = article.querySelector(optArticleTagsSelector);
@@ -126,12 +129,12 @@ function generateTags() {
     /* 5.[ IN PROGRESS] get tags from data-tags attribute */
 
     const articleTags = article.getAttribute('data-tags');
-    console.log('tagi artykułu:', articleTags);
+    // console.log('tagi artykułu:', articleTags);
 
     /* 6.[] split tags into array */
 
     const articleTagsArray = articleTags.split(' ');
-    console.log(articleTagsArray);
+    // console.log('tablica tagów(elemetów):', articleTagsArray);
 
     /* 7.[] START LOOP: for each tag */
 
@@ -139,7 +142,8 @@ function generateTags() {
       /* 8.[] generate HTML of the link */
 
       const linkHTML = `<li><a href=#tag-${tag}>${tag}</a></li>  `;
-      console.log(tag);
+      // console.log(tag); //kazdy tag osobno
+      // console.log(linkHTML);
 
       /* 9.[] add generated code to html variable */
 
@@ -165,6 +169,7 @@ function tagClickHandler(event) {
   /* [] make new constant named "clickedElement" and give it the value of "this" */
 
   const clickedElement = this;
+  // console.log('clickedElement:', clickedElement);
 
   /* [] make a new constant "href" and read the attribute "href" of the clicked element */
 
