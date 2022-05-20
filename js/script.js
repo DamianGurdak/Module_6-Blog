@@ -71,7 +71,7 @@ function generateTitleLinks(customSelector = '') {
   let html = '';
 
   for (let article of articles) {
-    /* 9.[IN PROGRESS] get the article id */
+    /* 9.[IN PROGRESS] get tnpm runne article id */
     const articleId = article.getAttribute('id');
     // console.log('articleiD', articleId);
 
@@ -349,3 +349,4 @@ function addClickListenersToAuthors() {
 }
 
 addClickListenersToAuthors();
+//cwnefoihn
