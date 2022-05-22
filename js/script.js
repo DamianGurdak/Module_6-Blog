@@ -46,9 +46,10 @@ const optArticleSelector = '.post', //artykół
   optTitleListSelector = '.titles', // tytuły linków
   optArticleTagsSelector = '.post-tags .list', // wyświtlanie tagów ma koncu każdego atykułu
   optArticleAuthorSelcetor = '.post-author', // nazwa autora
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = ' 5 ',
+  optTagsListSelector = '.tags.list', //odnalezienie listy tagów w prawej kolumnie
+  optCloudClassCount = '5',
   optCloudClassPrefix = ' tag-size- ';
+  
 
 function generateTitleLinks(customSelector = '') {
   /* 7.[IN PROGRESS] remove contents of titleList */
@@ -102,9 +103,13 @@ generateTitleLinks();
 
 function calculateTagsParams(tags) {
   const params = { max: 0, min: 999999 };
+  // console.log(params);
 
   for (let tag in tags) {
-    console.log(tag + ' is used ' + tags[tag] + ' times');
+    // console.log(tag + ' is used ' + tags[tag] + ' times');
+    // console.log(tag);
+    // console.log(tags);
+    // console.log(tags[tag]);
 
     if (tags[tag] > params.max) {
       params.max = tags[tag];
@@ -177,28 +182,29 @@ function generateTags() {
   /* [NEW] find list of tags in right column */ /////////////////////////////////////////
   const tagList = document.querySelector(optTagsListSelector);
 
-  //cos przed tym niżej
+  
   const tagsParams = calculateTagsParams(allTags);
-  console.log('tagsParams:', tagsParams);
+  // console.log('tagsParams:', tagsParams);
 
   /* [NEW] create variable for all links HTML code */
-  let allTagsHTML = '';
+  let allTagsHTML = ' ';
+  // console.log(allTagsHTML);
 
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let tag in allTags) {
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    // allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+
+    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
 
     // const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
     // console.log('tagLinkHTML:', tagLinkHTML);
 
-    const tagLinkHTML = `<li><a href="#tag-${tag}" class="tag-size-${calculateTagClass(
-      allTags[tag],
+    const tagLinkHTML = `<li><a href="#tag-${tag}" class="tag-size-${calculateTagClass(allTags[tag],
       tagsParams
     )}"> ${tag} </a></li>`;
-    console.log('tagLinkHTML:', tagLinkHTML);
+    // console.log('tagLinkHTML:', tagLinkHTML);
 
-    allTagsHTML += tagLinkHTML;
+    // allTagsHTML += tagLinkHTML;
   }
   /* [NEW] END LOOP: for each tag in allTags: */
 
