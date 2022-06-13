@@ -25,7 +25,7 @@ const templates = {
   //   document.querySelector('#author-tag-link').innerHTML
   // ),
   tagCloudLink: Handlebars.compile(
-    document.querySelector('#templates.tagCloudLink').innerHTML),
+    document.querySelector('#template-cloud-link').innerHTML),
   
 
 };
@@ -234,10 +234,10 @@ function generateTags() {
     // const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
     // console.log('tagLinkHTML:', tagLinkHTML);
 
-    const tagLinkHTML = `<li><a href="#tag-${tag}" class="tag-size-${calculateTagClass(
-      allTags[tag],
-      tagsParams
-    )}"> ${tag} </a></li>`;
+    // const tagLinkHTML = `<li><a href="#tag-${tag}" class="tag-size-${calculateTagClass(
+    //   allTags[tag],
+    //   tagsParams
+    // )}"> ${tag} </a></li>`;
     // console.log('tagLinkHTML:', tagLinkHTML);
 
     /////////////////////////////////////////////////////////
