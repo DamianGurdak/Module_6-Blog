@@ -21,19 +21,21 @@ const templates = {
     document.querySelector('#template-tag-link').innerHTML
   ),
 
-  // authorLink: Handlebars.compile(
-  //   document.querySelector('#author-tag-link').innerHTML
-  // ),
+  authorLink: Handlebars.compile(
+    document.querySelector('#template-author-link').innerHTML
+  ),
   tagCloudLink: Handlebars.compile(
-    document.querySelector('#template-cloud-link').innerHTML),
-  
+    document.querySelector('#template-cloud-link').innerHTML
+  ),
 
+  listAuthorLink: Handlebars.compile(
+    document.querySelector('#template-list-author-link').innerHTML
+  ),
 };
-// console.log(templates);
 
 const titleClickHandler = function (event) {
   event.preventDefault();
-  const clickedElement = this; //guzik
+  const clickedElement = this;
   // console.log('Link was clicked!');
   // console.log('event:', event);
 
@@ -70,14 +72,11 @@ const titleClickHandler = function (event) {
   targetArticle.classList.add('active');
 };
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 function generateTitleLinks(customSelector = '') {
   /* 7.[IN PROGRESS] remove contents of titleList */
   function clearMessages() {
     document.querySelector(opts.TitleListSelector).innerHTML = '';
   }
-
   clearMessages();
 
   const titleList = document.querySelector(opts.TitleListSelector);
@@ -223,7 +222,7 @@ function generateTags() {
   /* [NEW] create variable for all links HTML code */
   // let allTagsHTML = ' '; //juz nam nie potrzebne bo robimU szblony
   // console.log(allTagsHTML);
-  const allTagsData = {tags: []};
+  const allTagsData = { tags: [] };
 
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let tag in allTags) {
@@ -251,7 +250,7 @@ function generateTags() {
     allTagsData.tags.push({
       tag: tag,
       count: allTags[tag],
-      className: calculateTagClass(allTags[tag], tagsParams)
+      className: calculateTagClass(allTags[tag], tagsParams),
     });
   }
   /* [NEW] END LOOP: for each tag in allTags: */
@@ -259,7 +258,7 @@ function generateTags() {
   /*[NEW] add HTML from allTagsHTML to tagList */
   // tagList.innerHTML = allTagsHTML; //allTagsHTML JUZ NIE MMAY
   tagList.innerHTML = templates.tagCloudLink(allTagsData);
-  console.log(allTagsData);
+  // console.log(allTagsData);
 }
 
 generateTags();
@@ -344,7 +343,7 @@ function ganerateAuthors() {
     // console.log(author);
 
     /* [NEW] make html variable with empty string */
-    let html = '';
+    // let html = '';
 
     const articleAuthorWrapper = article.querySelector(
       opts.ArticleAuthorSelcetor
@@ -385,8 +384,13 @@ function ganerateAuthors() {
   // const authorParams = calculateTagsParams(allTags);
 
   /* [NEW] create variable for all links HTML code */
-  console.log(allAuthors);
+  // console.log(allAuthors);
+  //
+  //
+  //
+  //
   let allAuthorsHTML = '';
+  const listAuthorLink = {authors: []};
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let author in allAuthors) {
     /* [NEW] generate code of a link and add it to allTagsHTML */
@@ -398,8 +402,17 @@ function ganerateAuthors() {
 
     const authorLinkHTML = `<li><a href="#author-${author}"> ${author}(${allAuthors[author]})</a></li>`;
     // console.log('tagLinkHTML:', tagLinkHTML);
+    console.log('authorLinkHTML:', authorLinkHTML);
 
+//
+//
+//
     allAuthorsHTML += authorLinkHTML;
+    listAuthorLink.authors.push({
+      authors: author,
+      count: listAuthorLink[author],
+      className: calculateTagClass(listAuthorLink[author], xxxx)
+    });
   }
   /* [NEW] END LOOP: for each tag in allTags: */
 
